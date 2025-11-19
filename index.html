@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictory AI - Transformez vos idées en vidéos virales 🎬</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .gradient-border {
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .vanta-canvas {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 0;
+        }
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-video text-2xl text-white"></i>
+                    <span class="text-white font-bold text-xl">Pictory AI</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-white hover:text-pink-300 transition-colors">Fonctionnalités</a>
+                    <a href="#pricing" class="text-white hover:text-pink-300 transition-colors">Tarifs</a>
+                    <a href="#testimonials" class="text-white hover:text-pink-300 transition-colors">Témoignages</a>
+                    <a href="https://pictory.ai" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
+                        Essayer Gratuitement
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg">
+        <div id="vanta-bg" class="absolute inset-0"></div>
+        <div class="content-overlay max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="floating">
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                    Transformez vos 
+                    <span class="text-gradient">idées</span>
+                    <br>en vidéos 
+                    <span class="text-gradient">virales</span> 🚀
+                </h1>
+            </div>
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Créez des vidéos captivantes pour TikTok, YouTube et Instagram en quelques minutes avec l'IA. 
+                <strong class="text-pink-300">Plus besoin d'être expert en montage !</strong>
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                <a href="https://pictory.ai" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all transform hover:scale-105 pulse-animation">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Essayer Pictory AI Gratuitement
+                </a>
+                <button onclick="playDemo()" class="bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/30 transition-all border border-white/30">
+                    <i class="fas fa-play mr-2"></i>
+                    Voir la démo
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black text-white mb-2">500K+</div>
+                    <div class="text-white/80">Créateurs</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black text-white mb-2">10M+</div>
+                    <div class="text-white/80">Vidéos créées</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black text-white mb-2">95%</div>
+                    <div class="text-white/80">Temps économisé</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black text-white mb-2">4.9/5</div>
+                    <div class="text-white/80">Note utilisateurs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Pourquoi les créateurs ❤️ Pictory AI
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Des fonctionnalités puissantes pour créer du contenu qui fait sensation sur les réseaux sociaux
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-magic text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">IA Génératrice</h3>
+                    <p class="text-gray-600 mb-4">Transformez automatiquement vos scripts en vidéos captivantes avec des images, musiques et effets intelligents.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Génération automatique de scènes</li>
+                        <li>✓ Musique et effets synchronisés</li>
+                        <li>✓ Voix off IA réalistes</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl border border-blue-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Mode Rapide</h3>
+                    <p class="text-gray-600 mb-4">Créez des vidéos Shorts/Reels en quelques clics. Parfait pour TikTok, YouTube Shorts et Instagram Reels.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Format vertical optimisé</li>
+                        <li>✓ Templates viraux prêts à l'emploi</li>
+                        <li>✓ Export rapide HD/4K</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-3xl border border-green-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Viral Optimizer</h3>
+                    <p class="text-gray-600 mb-4">Analysez et optimisez vos vidéos pour maximiser les vues et l'engagement sur toutes les plateformes.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Analyse de performance IA</li>
+                        <li>✓ Suggestions d'amélioration</li>
+                        <li>✓ A/B testing automatique</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-3xl border border-orange-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Collaboration</h3>
+                    <p class="text-gray-600 mb-4">Travaillez en équipe sur vos projets vidéo avec des outils de collaboration en temps réel.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Édition collaborative</li>
+                        <li>✓ Commentaires en temps réel</li>
+                        <li>✓ Partage facile avec votre équipe</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="card-hover bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl border border-indigo-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Media Library</h3>
+                    <p class="text-gray-600 mb-4">Accédez à plus de 10 millions de clips vidéo, images et musiques libres de droits.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Contenu HD/4K premium</li>
+                        <li>✓ Musiques et effets sonores</li>
+                        <li>✓ Images et animations</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="card-hover bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-3xl border border-pink-100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Multi-Plateforme</h3>
+                    <p class="text-gray-600 mb-4">Exportez vos vidéos dans les formats optimisés pour chaque plateforme sociale.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ TikTok (9:16)</li>
+                        <li>✓ YouTube (16:9 & 9:16)</li>
+                        <li>✓ Instagram (Carré & Stories)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Commencez gratuitement aujourd'hui 🎯
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Rejoignez 500 000+ créateurs qui utilisent Pictory AI pour créer du contenu viral
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">🎁 OFFRE SPÉCIALE</h3>
+                        <p class="text-white/90">Essai gratuit + 20% de réduction avec notre lien exclusif</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-center mb-8">
+                            <div class="text-5xl font-black text-gray-900 mb-2">0€</div>
+                            <div class="text-gray-600">pour commencer</div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>3 vidéos gratuites pour tester</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Accès à toutes les fonctionnalités</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Export HD sans filigrane</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Support premium 24/7</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://pictory.ai" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all transform hover:scale-105 w-full">
+                                <i class="fas fa-rocket mr-2"></i>
+                                Commencer maintenant
+                            </a>
+                            <p class="text-sm text-gray-500 mt-4">Pas besoin de carte bancaire • Annulation à tout moment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Ils ont créé des vidéos virales avec Pictory AI ⭐
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Découvrez ce que disent les créateurs qui utilisent Pictory AI
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-3xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-900">@SarahCreateuse</div>
+                            <div class="text-sm text-gray-600">TikTok - 2.5M followers</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Pictory AI a révolutionné ma création de contenu ! Je passe 90% moins de temps sur le montage et mes vidéos ont 3x plus de vues."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-3xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-900">@MaxVideoMaker</div>
+                            <div class="text-sm text-gray-600">YouTube - 850K subs</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Je créais 2 vidéos par semaine, maintenant j'en fais 10 ! La qualité est incroyable et mes revenus ont explosé."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-3xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold">
+                            L
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-900">@LisaContent</div>
+                            <div class="text-sm text-gray-600">Instagram - 1.2M followers</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Enfin un outil qui comprend ce dont les créateurs ont besoin ! Mes Reels atteignent maintenant 1M+ vues régulièrement."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-purple-600 to-pink-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Prêt à créer vos premières vidéos virales ? 🚀
+            </h2>
+            <p class="text-xl text-white/90 mb-8">
+                Rejoignez la révolution des créateurs de contenu avec Pictory AI
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="https://pictory.ai" target="_blank" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all transform hover:scale-105">
+                    <i class="fas fa-play mr-2"></i>
+                    Commencer gratuitement maintenant
+                </a>
+                <div class="text-white/80 text-sm">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Sécurisé • Sans engagement • Support 24/7
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <i class="fas fa-video text-2xl text-pink-400"></i>
+                    <span class="text-2xl font-bold">Pictory AI</span>
+                </div>
+                <p class="text-gray-400 mb-6">L'outil préféré des créateurs de contenu viral</p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    © 2024 Pictory AI. Tous droits réservés. 
+                    <a href="https://pictory.ai" target="_blank" class="text-pink-400 hover:text-pink-300">Lien d'affiliation</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.BIRDS({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x667eea,
+            color1: 0x764ba2,
+            color2: 0x667eea,
+            colorMode: "lerp",
+            birdSize: 1.2,
+            wingSpan: 25.00,
+            speedLimit: 3.00,
+            separation: 20.00,
+            alignment: 20.00,
+            cohesion: 20.00,
+            quantity: 3.00
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Demo video function
+        function playDemo() {
+            alert('🎬 Démonstration de Pictory AI !\n\nDans une vraie vidéo TikTok, vous verriez ici:\n• Avant/Après des vidéos créées\n• Time-lapse du processus de création\n• Résultats de performance\n• Témoignages rapides\n\nCliquez sur "Essayer Gratuitement" pour tester vous-même !');
+        }
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add floating animation to hero elements
+        setInterval(() => {
+            const elements = document.querySelectorAll('.floating');
+            elements.forEach(el => {
+                el.style.transform = `translateY(${Math.sin(Date.now() / 1000) * 10}px)`;
+            });
+        }, 50);
+    </script>
+</body>
+</html>
