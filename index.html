@@ -15,20 +15,10 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow-x: hidden;
         }
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
         .text-gradient {
             background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         .vanta-canvas {
             position: absolute !important;
@@ -38,27 +28,23 @@
             height: 100% !important;
             z-index: 0;
         }
-        .content-overlay {
-            position: relative;
-            z-index: 10;
-        }
     </style>
 </head>
 <body class="min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-video text-2xl text-white"></i>
-                    <span class="text-white font-bold text-xl">Pictory AI</span>
+                    <span class="text-white font-bold">Pictory AI</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-white hover:text-pink-300 transition-colors">Fonctionnalités</a>
-                    <a href="#pricing" class="text-white hover:text-pink-300 transition-colors">Tarifs</a>
-                    <a href="#testimonials" class="text-white hover:text-pink-300 transition-colors">Témoignages</a>
-                    <!-- CTA MODIFIÉ : vers formulaire -->
-                    <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                    <a href="#features" class="text-white hover:text-pink-300">Fonctionnalités</a>
+                    <a href="#pricing" class="text-white hover:text-pink-300">Tarifs</a>
+                    <a href="#testimonials" class="text-white hover:text-pink-300">Témoignages</a>
+                    <!-- CTA MODIFIÉ -->
+                    <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full">
                         Tutoriel Gratuit
                     </a>
                 </div>
@@ -66,99 +52,54 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg">
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center">
         <div id="vanta-bg" class="absolute inset-0"></div>
-        <div class="content-overlay max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-                Transformez vos 
-                <span class="text-gradient">idées</span>
-                <br>en vidéos 
-                <span class="text-gradient">virales</span> 🚀
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-5xl md:text-7xl font-black mb-6">
+                Transformez vos <span class="text-gradient">idées</span><br>en vidéos <span class="text-gradient">virales</span>
             </h1>
-            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Créez des vidéos captivantes pour TikTok, YouTube et Instagram en 4 minutes avec l'IA. 
-                <strong class="text-pink-300">Plus besoin d'être expert en montage !</strong>
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-                <!-- CTA PRINCIPAL MODIFIÉ : vers formulaire -->
-                <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all">
-                    <i class="fas fa-gift mr-2"></i>
-                    🎁 OBTENIR LE TUTORIEL GRATUIT
+            <p class="text-xl mb-8">Créez des vidéos en 4 minutes avec l'IA</p>
+            <div class="flex gap-4 justify-center">
+                <!-- CTA PRINCIPAL MODIFIÉ -->
+                <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 px-8 py-4 rounded-full font-bold">
+                    🎁 OBTENIR LE TUTORIEL
                 </a>
-                <!-- CTA SECONDAIRE : vers Pictory -->
-                <a href="https://pictory.ai" target="_blank" class="bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-bold border border-white/30">
-                    <i class="fas fa-rocket mr-2"></i>
+                <!-- CTA SECONDAIRE -->
+                <a href="https://pictory.ai" target="_blank" class="bg-white/20 px-8 py-4 rounded-full font-bold border">
                     Essayer Pictory AI
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features -->
     <section id="features" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-                    Pourquoi les créateurs ❤️ Pictory AI
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Des fonctionnalités puissantes pour créer du contenu qui fait sensation
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Tes 6 features cards restent identiques -->
-                <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl">
-                    <h3 class="text-2xl font-bold mb-4">IA Génératrice</h3>
-                    <p class="text-gray-600">Transformez automatiquement vos scripts en vidéos captivantes.</p>
-                </div>
-                <!-- ... colle TOUTES tes autres features ici ... -->
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-black text-center mb-16">Fonctionnalités</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tes 6 cards -->
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing -->
     <section id="pricing" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-                    Commencez gratuitement aujourd'hui 🎯
-                </h2>
-            </div>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-                    <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-center">
-                        <h3 class="text-2xl font-bold text-white mb-2">🎁 OFFRE SPÉCIALE</h3>
-                    </div>
-                    <div class="p-8 text-center">
-                        <div class="text-5xl font-black mb-2">0€</div>
-                        <!-- CTA PRINCIPAL MODIFIÉ : vers formulaire -->
-                        <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" 
-                           class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold w-full">
-                            🎁 OBTENIR LE TUTORIEL GRATUIT
-                        </a>
-                        <p class="text-sm text-gray-500 mt-4">Puis testez Pictory AI avec 3 vidéos gratuites</p>
-                    </div>
-                </div>
-            </div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <!-- CTA MODIFIÉ -->
+            <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold">
+                🎁 OBTENIR LE TUTORIEL GRATUIT
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-500 text-sm">
-                © 2024 Pictory AI. 
-                <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="text-pink-400">Tutoriel gratuit</a> | 
-                <a href="https://pictory.ai" target="_blank" class="text-pink-400">Lien d'affiliation</a>
-            </p>
-        </div>
+    <footer class="bg-gray-900 text-white py-6 text-center">
+        <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="text-pink-400">Tutoriel gratuit</a>
     </footer>
 
-    <!-- TON SCRIPT VANTA.JS RESTE -->
     <script>
-        VANTA.BIRDS({ el: "#vanta-bg", mouseControls: true, touchControls: true, backgroundColor: 0x667eea, color1: 0x764ba2, color2: 0x667eea });
-        // Smooth scroll...
+        VANTA.BIRDS({ el: "#vanta-bg", backgroundColor: 0x667eea });
     </script>
 </body>
 </html>
