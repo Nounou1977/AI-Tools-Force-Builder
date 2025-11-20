@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pictory AI - Transformez vos idées en vidéos virales 🎬</title>
+    <title>AI Tools Force Builder - Transformez vos idées en vidéos virales 🎬</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
@@ -15,10 +15,45 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow-x: hidden;
         }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
         .text-gradient {
             background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .gradient-border {
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .vanta-canvas {
             position: absolute !important;
@@ -28,78 +63,372 @@
             height: 100% !important;
             z-index: 0;
         }
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+        }
     </style>
+<base target="_blank">
 </head>
 <body class="min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4">
+    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-video text-2xl text-white"></i>
-                    <span class="text-white font-bold">Pictory AI</span>
+                    <i class="fas fa-robot text-2xl text-white"></i>
+                    <span class="text-white font-bold text-xl">AI Tools Force Builder</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-white hover:text-pink-300">Fonctionnalités</a>
-                    <a href="#pricing" class="text-white hover:text-pink-300">Tarifs</a>
-                    <a href="#testimonials" class="text-white hover:text-pink-300">Témoignages</a>
-                    <!-- CTA MODIFIÉ -->
-                    <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full">
-                        Tutoriel Gratuit
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white hover:text-pink-300 transition-colors">Fonctionnalités</a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white hover:text-pink-300 transition-colors">Tarifs</a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white hover:text-pink-300 transition-colors">Témoignages</a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
+                        Essayer Gratuitement
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center">
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg">
         <div id="vanta-bg" class="absolute inset-0"></div>
-        <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-5xl md:text-7xl font-black mb-6">
-                Transformez vos <span class="text-gradient">idées</span><br>en vidéos <span class="text-gradient">virales</span>
-            </h1>
-            <p class="text-xl mb-8">Créez des vidéos en 4 minutes avec l'IA</p>
-            <div class="flex gap-4 justify-center">
-                <!-- CTA PRINCIPAL MODIFIÉ -->
-                <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 px-8 py-4 rounded-full font-bold">
-                    🎁 OBTENIR LE TUTORIEL
-                </a>
-                <!-- CTA SECONDAIRE -->
-                <a href="https://pictory.ai" target="_blank" class="bg-white/20 px-8 py-4 rounded-full font-bold border">
-                    Essayer Pictory AI
-                </a>
+        <div class="content-overlay max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="floating">
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                    Transformez vos 
+                    <span class="text-gradient">idées</span>
+                    en vidéos virales
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
+                    Créez des vidéos professionnelles en quelques minutes avec l'IA. 
+                    Pas de compétences techniques requises.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 pulse-animation">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Commencer Maintenant
+                    </a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all">
+                        <i class="fas fa-play mr-2"></i>
+                        Voir la Démo
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-black text-center mb-16">Fonctionnalités</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Tes 6 cards -->
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                    Fonctionnalités <span class="text-gradient">Puissantes</span>
+                </h2>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    Tout ce dont vous avez besoin pour créer des vidéos professionnelles
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-magic text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">IA Intelligente</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Notre IA analyse automatiquement votre contenu pour créer des vidéos optimisées
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Rapide & Efficace</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Créez des vidéos en quelques minutes au lieu d'heures. Gain de temps garanti.
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Facile à Utiliser</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Interface intuitive qui ne nécessite aucune compétence technique
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Vidéos Virales</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Des templates optimisés pour maximiser l'engagement sur les réseaux sociaux
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-palette text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Personnalisation</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Personnalisez vos vidéos avec votre branding, couleurs et style
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-download text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Export HD</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Exportez vos vidéos en haute définition pour une qualité professionnelle
+                    </p>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="inline-block mt-6 bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Essayer
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <!-- CTA MODIFIÉ -->
-            <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold">
-                🎁 OBTENIR LE TUTORIEL GRATUIT
-            </a>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                    Des Tarifs <span class="text-gradient">Abordables</span>
+                </h2>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    Choisissez le plan qui correspond à vos besoins
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-4">Starter</h3>
+                    <div class="text-4xl font-black text-white mb-6">
+                        19€<span class="text-lg font-normal text-white/80">/mois</span>
+                    </div>
+                    <ul class="text-white/80 space-y-3 mb-8">
+                        <li>• 10 vidéos par mois</li>
+                        <li>• Résolution HD</li>
+                        <li>• Support par email</li>
+                        <li>• Templates basiques</li>
+                    </ul>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                        Choisir Starter
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl p-8 text-center border-2 border-gradient relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                        POPULAIRE
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Pro</h3>
+                    <div class="text-4xl font-black text-white mb-6">
+                        49€<span class="text-lg font-normal text-white/80">/mois</span>
+                    </div>
+                    <ul class="text-white/80 space-y-3 mb-8">
+                        <li>• Vidéos illimitées</li>
+                        <li>• Résolution 4K</li>
+                        <li>• Support prioritaire</li>
+                        <li>• Templates premium</li>
+                        <li>• Branding personnalisé</li>
+                    </ul>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                        Choisir Pro
+                    </a>
+                </div>
+
+                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-4">Entreprise</h3>
+                    <div class="text-4xl font-black text-white mb-6">
+                        99€<span class="text-lg font-normal text-white/80">/mois</span>
+                    </div>
+                    <ul class="text-white/80 space-y-3 mb-8">
+                        <li>• Vidéos illimitées</li>
+                        <li>• Résolution 8K</li>
+                        <li>• Support dédié 24/7</li>
+                        <li>• Templates exclusifs</li>
+                        <li>• API d'intégration</li>
+                        <li>• Compte multi-utilisateurs</li>
+                    </ul>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                        Choisir Entreprise
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                    Ce que disent nos <span class="text-gradient">utilisateurs</span>
+                </h2>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    Des milliers de créateurs nous font confiance
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&crop=face" alt="Sarah" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-white font-bold">Sarah M.</h4>
+                            <p class="text-white/60 text-sm">Créatrice de contenu</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80 leading-relaxed">
+                        "AI Tools Force Builder a révolutionné ma façon de créer du contenu. Je peux maintenant produire 10 vidéos en une heure !"
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Marc" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-white font-bold">Marc L.</h4>
+                            <p class="text-white/60 text-sm">Marketing Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80 leading-relaxed">
+                        "L'outil parfait pour nos campagnes marketing. Rapide, efficace et les résultats sont impressionnants."
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face" alt="Emma" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-white font-bold">Emma D.</h4>
+                            <p class="text-white/60 text-sm">Influenceuse</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80 leading-relaxed">
+                        "Je n'ai jamais eu d'outil aussi puissant pour mes vidéos TikTok et Instagram. Mes followers adorent !"
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                    Rejoignez nos utilisateurs satisfaits
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6 text-center">
-        <a href="https://forms.gle/9H8huUnHQ8LCCLnt5" target="_blank" class="text-pink-400">Tutoriel gratuit</a>
+    <footer class="bg-black/20 backdrop-blur-md py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-6">
+                    <i class="fas fa-robot text-3xl text-white"></i>
+                    <span class="text-white font-bold text-2xl">AI Tools Force Builder</span>
+                </div>
+                <p class="text-white/60 mb-6">
+                    Transformez vos idées en vidéos virales avec la puissance de l'IA
+                </p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://forms.gle/SoZMomLtfEYtzUE8A" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-white/40 text-sm">
+                    © 2024 AI Tools Force Builder. Tous droits réservés.
+                </p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        VANTA.BIRDS({ el: "#vanta-bg", backgroundColor: 0x667eea });
+        // Initialize Vanta.js background
+        VANTA.BIRDS({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x667eea,
+            color1: 0xf093fb,
+            color2: 0xf5576c,
+            birdSize: 1.20,
+            wingSpan: 25.00,
+            speedLimit: 3.00,
+            separation: 20.00,
+            alignment: 20.00,
+            cohesion: 20.00,
+            quantity: 3.00
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
