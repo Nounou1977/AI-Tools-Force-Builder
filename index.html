@@ -1,349 +1,202 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools Force Builder - Générez votre script vidéo viral IA 🚀</title>
-    
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WGS4CCBH');</script>
-        <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
-        }
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .text-gradient {
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .gradient-border {
-            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
-            background-size: 400% 400%;
-            animation: gradient 3s ease infinite;
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .vanta-canvas {
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            z-index: 0;
-        }
-        .content-overlay {
-            position: relative;
-            z-index: 10;
-        }
-        /* STYLES SPÉCIFIQUES AU GÉNÉRATEUR */
-        .script-area {
-            background-color: #1e1e1e;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            margin-top: 30px;
-        }
-        .script-input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #444;
-            border-radius: 8px;
-            background-color: #2c2c2c;
-            color: #fff;
-            font-size: 16px;
-        }
-        .btn-generate-tool {
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #bb86fc; /* Couleur Néon Violet */
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-        .btn-generate-tool:hover {
-            background-color: #a274db;
-        }
-        .script-result-box {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px dashed #3a3a3a;
-            border-radius: 8px;
-            background-color: #0d0d0d;
-        }
-        .cta-tool-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .cta-tool-buttons a {
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
-<base target="_blank">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WGS4CCBH');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Force Builder - Générateur de Scripts IA (Gratuit)</title>
+    <meta name="description" content="Créez des scripts vidéo courts et viraux pour TikTok, YouTube Shorts ou Reels en quelques secondes grâce à notre IA gratuite.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result-section {
+            margin-top: 30px;
+            background-color: #e9f7ef;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #c3e6cb;
+            display: none; /* Masqué par défaut */
+        }
+        #result-section h2 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        #generated-script {
+            white-space: pre-wrap;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .cta-pictory {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff4500; /* Orange de Pictory AI */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cta-pictory:hover {
+            background-color: #cc3700;
+        }
+        footer {
+            margin-top: auto; /* Pousse le footer vers le bas */
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #777;
+        }
+    </style>
 </head>
-<body class="min-h-screen">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGS4CCBH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        
-        <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-robot text-2xl text-white"></i>
-                    <span class="text-white font-bold text-xl">AI Tools Force Builder</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="https://pictory.ai/" class="text-white hover:text-pink-300 transition-colors">Fonctionnalités</a>
-                    <a href="https://pictory.ai/" class="text-white hover:text-pink-300 transition-colors">Tarifs</a>
-                    <a href="https://pictory.ai/" class="text-white hover:text-pink-300 transition-colors">Témoignages</a>
-                    <a href="https://pictory.ai/" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
-                        Essayer Gratuitement
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGS4CCBH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="container">
+        <h1>AI Tools Force Builder - Générateur de Scripts IA (Gratuit)</h1>
+        <p>Créez des idées et des structures de scripts vidéo percutantes pour TikTok, YouTube Shorts, et Reels en quelques secondes avec AI Tools Force Builder.</p>
 
-        <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg">
-        <div id="vanta-bg" class="absolute inset-0"></div>
-        <div class="content-overlay max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            
-            <div class="script-area max-w-xl mx-auto">
-                <h1 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
-                    Obtenez votre <span class="text-gradient">Script Viral IA</span> Gratuitement !
-                </h1>
-                <p class="text-white/80 mb-6">
-                    Décrivez l'idée de votre vidéo et notre IA génère un script de 30 secondes optimisé pour les outils de création vidéo.
-                </p>
-                
-                <input type="text" id="user-input" class="script-input" placeholder="Ex: Chat volant qui fait du skateboard sur la lune..." />
+        <label for="topic-input">Quel est le sujet de votre vidéo ?</label>
+        <textarea id="topic-input" placeholder="Ex: Comment bien dormir, Recette rapide de pâtes, Astuce pour apprendre l'anglais..."></textarea>
 
-                <button class="btn-generate-tool pulse-animation" onclick="generateScript()">
-                    Générer le Script Magique 🚀
-                </button>
-                
-                <p id="loading-message" class="text-purple-400 mt-4" style="display:none;">
-                    Analyse agentique en cours... Génération du script optimisé. 🧠
-                </p>
+        <button onclick="generateScript()">Générer le Script</button>
 
-                <div id="result-area" class="script-result-box text-left" style="display:none;">
-                    <h2 class="text-xl font-bold text-cyan-400 mb-3">✅ Script Vidéo Prêt à l'emploi :</h2>
-                    <pre id="script-output" class="text-white/90 whitespace-pre-wrap"></pre>
-                    
-                    <div class="cta-tool-buttons">
-                                                <a href="https://pictory.ai/?ref=VOTRE_FUTUR_ID_AFFILIE" id="pictory-link" class="bg-cyan-500 hover:bg-cyan-600 text-black flex-1" target="_blank">
-                            Créer la Vidéo sur Pictory
-                        </a>
-                        <button class="bg-gray-600 hover:bg-gray-700 text-white flex-1" onclick="copyScript()">
-                            Copier le Script
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div id="result-section">
+            <h2>Votre Script IA est Prêt !</h2>
+            <div id="generated-script"></div>
+            <a href="#" class="cta-pictory" target="_blank">Créer la Vidéo sur Pictory AI (Recommandé)</a>
+        </div>
+    </div>
 
-        </div>
-    </section>
+    <footer>
+        <p>&copy; 2023 AI Tools Force Builder. Outil gratuit créé pour la communauté.</p>
+    </footer>
 
-            <section id="features" class="py-20 bg-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
-                    Fonctionnalités <span class="text-gradient">Puissantes</span>
-                </h2>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto">
-                    Tout ce dont vous avez besoin pour créer des vidéos professionnelles
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-magic text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">IA Intelligente</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Notre IA analyse automatiquement votre contenu pour créer des vidéos optimisées
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
+    <script>
+        function generateScript() {
+            const topic = document.getElementById('topic-input').value;
+            if (!topic) {
+                alert("Veuillez entrer un sujet pour générer le script.");
+                return;
+            }
 
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-clock text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Rapide & Efficace</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Créez des vidéos en quelques minutes au lieu d'heures. Gain de temps garanti.
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
+            const scripts = [
+                `**Titre Accrocheur :** "${topic} en 30 secondes chrono !"
+**Hook (0-3s) :** Montre quelque chose d'intrigant lié à "${topic}".
+**Problème (3-8s) :** "Tu as toujours eu du mal avec ${topic} ?"
+**Solution Rapide (8-15s) :** "Voici L'ASTUCE simple que personne ne te dit pour ${topic}."
+**Détail/Exemple (15-22s) :** Montre rapidement comment faire/le résultat.
+**Appel à l'Action (22-30s) :** "Essaie cette astuce MAINTENANT ! Partage si ça t'a aidé !"`,
 
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-users text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Facile à Utiliser</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Interface intuitive qui ne nécessite aucune compétence technique
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
+                `**Titre :** "Le Secret de ${topic} révélé !"
+**Hook (0-5s) :** Une question choc : "Voulez-vous vraiment savoir le secret pour ${topic} ?"
+**Mythe Brisé (5-12s) :** "Oubliez tout ce que vous savez sur ${topic}, la méthode X est dépassée."
+**Nouvelle Approche (12-20s) :** "La vraie clé pour ${topic}, c'est de faire ça..." (Montre l'astuce).
+**Bénéfice (20-25s) :** "Imaginez votre vie après avoir maîtrisé ${topic} !"
+**CTA (25-30s) :** "Clique sur le lien en bio pour plus de hacks sur ${topic} !"`,
 
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-chart-line text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Vidéos Virales</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Des templates optimisés pour maximiser l'engagement sur les réseaux sociaux
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
+                `**Titre :** "Stop ! Ne faites plus JAMAIS ça pour ${topic} !"
+**Hook (0-4s) :** Quelque chose qui choque ou surprend par rapport à ${topic}.
+**Erreur Fréquente (4-12s) :** "L'erreur n°1 que tout le monde fait avec ${topic} et qui ruine tout."
+**La Bonne Méthode (12-20s) :** "Voici comment corriger ça en 2 étapes simples pour ${topic}."
+**Preuve Sociale (20-25s) :** "Des milliers de personnes ont déjà changé leur approche pour ${topic}."
+**CTA (25-30s) :** "Abonne-toi pour ne rater aucune astuce sur ${topic} !"`,
 
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-palette text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Personnalisation</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Personnalisez vos vidéos avec votre branding, couleurs et style
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
+                `**Titre :** "Débloque ton potentiel de ${topic} avec cette astuce IA !"
+**Hook (0-3s) :** Une animation rapide ou un graphique montrant une amélioration.
+**Problème (3-8s) :** "Tu te sens bloqué dans ${topic} ?"
+**La Solution IA (8-15s) :** "AI Tools Force Builder t'aide à créer des scripts percutants pour ${topic} en un clin d'œil."
+**Démonstration Rapide (15-22s) :** Montre ton outil générant le script avec le sujet.
+**Appel à l'Action (22-30s) :** "Teste-le maintenant (lien en bio) et deviens un pro de ${topic} !"`,
+            ];
 
-                <div class="card-hover bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-download text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Export HD</h3>
-                    <p class="text-white/80 leading-relaxed">
-                        Exportez vos vidéos en haute définition pour une qualité professionnelle
-                    </p>
-                    <a href="https://pictory.ai/" class="inline-block mt-6 bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
-                        Essayer
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+            const randomIndex = Math.floor(Math.random() * scripts.length);
+            const generatedText = scripts[randomIndex].replace(/\[sujet\]/g, topic);
 
-        <section id="testimonials" class="py-20 bg-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
-                    Ce que disent nos <span class="text-gradient">utilisateurs</span>
-                </h2>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto">
-                    Des milliers de créateurs nous font confiance
-                </p>
-            </div>
+            document.getElementById('generated-script').innerText = generatedText;
+            document.getElementById('result-section').style.display = 'block';
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold">Marie D.</h4>
-                            <p class="text-white/60 text-sm">Influenceuse</p>
-                        </div>
-                    </div>
-                    <p class="text-white/90 leading-relaxed">
-                        "Grâce à AI Tools Force Builder, j'ai multiplié par 3 mon engagement sur Instagram. Les vidéos sont professionnelles et créées en minutes !"
-                    </p>
-                    <div class="flex text-yellow-400 mt-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold">Jean L.</h4>
-                            <p class="text-white/60 text-sm">Entrepreneur</p>
-                        </div>
-                    </div>
-                    <p class="text-white/90 leading-relaxed">
-                        "J'ai économisé des milliers d'euros en créant mes propres vidéos publicitaires. L'IA est incroyablement intuitive et rapide."
-                    </p>
-                    <div class="flex text-yellow-400 mt-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4
+            const pictoryCta = document.querySelector('.cta-pictory');
+            pictoryCta.href = `https://pictory.ai/try-ai-video-editor?ref=your-partner-id-here&sub_id=${encodeURIComponent(topic)}`;
+        }
+    </script>
+</body>
+</html>
