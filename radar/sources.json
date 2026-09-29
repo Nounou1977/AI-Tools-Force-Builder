@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Google News - AI automation jobs",
+    "url": "https://news.google.com/rss/search?q=%22AI+automation%22+job+OR+project&hl=en-US&gl=US&ceid=US:en"
+  },
+  {
+    "name": "Google News - urgent automation",
+    "url": "https://news.google.com/rss/search?q=%22urgent%22+%22automation%22+freelance&hl=en-US&gl=US&ceid=US:en"
+  },
+  {
+    "name": "Google News - n8n automation",
+    "url": "https://news.google.com/rss/search?q=n8n+automation+freelance+project&hl=en-US&gl=US&ceid=US:en"
+  }
+]
